@@ -71,4 +71,4 @@ curl -i localhost:49160
 ```
 ## Customization
 
-Feel free to customize the Django web app and the Docker configuration to suit your needs. You can modify the source code in the ```  ``` file and update the Dockerfile as necessary.
+Feel free to customize the Django web app and the Docker configuration to suit your needs. You can modify the HTML view in the ``` Dockerize_Python_djangoApp/mysite/hello_world/templates/hello_world.html ``` file.
