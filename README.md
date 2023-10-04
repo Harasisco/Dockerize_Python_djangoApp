@@ -1,7 +1,5 @@
 # Dockerize_Python_DjangoApp
 
-![image](https://github.com/Harasisco/Dockerize_Python_djangoApp/assets/87074807/b15a2d24-d23a-4f7f-bd83-76cb69bfbb72 )
-
 <p>Welcome to the Dockerize Python Django App repository! In this project, we'll guide you through the process of containerizing a Django web App application using Docker. Docker makes it easy to package your application and its dependencies into a single, portable container that can run consistently across different environments. </p>
 
 ## Table of Contents
