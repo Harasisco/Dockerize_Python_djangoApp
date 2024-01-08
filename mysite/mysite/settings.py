@@ -10,7 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+from pathlib import Path
 import os
+from os import getenv, popen
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v!4dkmjqx*97mkh%vg4*qrkke7dy@&04^ge%z$$jl$2!*9we$&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'health_check',
+    'health_check.db',
+    'django_probes',
     'hello_world'
 ]
 
@@ -74,11 +79,23 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if getenv('USE_MYSQL', '').lower() == 'true':
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': getenv('DATABASE_NAME', ''),
+            'USER': getenv('DATABASE_USER', ''),
+            'PASSWORD': getenv('DATABASE_PASSWORD', ''),
+            'HOST': getenv('DATABASE_HOST', ''),
+            'PORT': getenv('DATABASE_PORT', ''),
+        }
     }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sql',
+        }
 }
 
 
