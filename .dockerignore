@@ -1,5 +1,5 @@
 venv
 .git
-Dockerfile
+.env
 env.example
 README.md
