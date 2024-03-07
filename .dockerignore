@@ -1,5 +1,5 @@
 venv
 .git
-.env
+**/.env
 env.example
 README.md
